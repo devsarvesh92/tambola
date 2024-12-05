@@ -13,3 +13,18 @@ license = {text = "MIT"}
 
 [tool.pdm]
 distribution = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+pythonpath = [
+    "."
+]
+
+
+# Markers definition
+markers = [
+"ticket: Ticket model tests",
+]
