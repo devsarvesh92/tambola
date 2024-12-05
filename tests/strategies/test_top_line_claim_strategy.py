@@ -1,19 +1,11 @@
 import pytest
 from src.strategies.top_line_claim_strategy import TopLineClaimStrategy
-from src.domain.ticket import Ticket
 
 pytestmark = pytest.mark.top_line_claim_strategy
 
 
-def test_top_line_valid_completion():
+def test_top_line_valid_completion(ticket):
 
-    ticket = Ticket(
-        raw_ticket=[
-            "4,16,_,_,48,_,63,76,_",
-            "7,_,23,38,_,52,_,_,80",
-            "9,_,25,_,_,56,64,_,83",
-        ]
-    )
     top_line_claim_strategy = TopLineClaimStrategy()
 
     claim_result = top_line_claim_strategy.validate(
@@ -23,14 +15,7 @@ def test_top_line_valid_completion():
     assert claim_result.name == "ACCEPTED"
 
 
-def test_top_line_incomplete_numbers():
-    ticket = Ticket(
-        raw_ticket=[
-            "4,16,_,_,48,_,63,76,_",
-            "7,_,23,38,_,52,_,_,80",
-            "9,_,25,_,_,56,64,_,83",
-        ]
-    )
+def test_top_line_incomplete_numbers(ticket):
     top_line_claim_strategy = TopLineClaimStrategy()
 
     claim_result = top_line_claim_strategy.validate(
@@ -40,14 +25,8 @@ def test_top_line_incomplete_numbers():
     assert claim_result.name == "REJECTED"
 
 
-def test_top_line_late_claim():
-    ticket = Ticket(
-        raw_ticket=[
-            "4,16,_,_,48,_,63,76,_",
-            "7,_,23,38,_,52,_,_,80",
-            "9,_,25,_,_,56,64,_,83",
-        ]
-    )
+def test_top_line_late_claim(ticket):
+
     top_line_claim_strategy = TopLineClaimStrategy()
 
     claim_result = top_line_claim_strategy.validate(

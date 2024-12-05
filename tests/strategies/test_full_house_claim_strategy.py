@@ -1,19 +1,11 @@
 import pytest
 from src.strategies.full_house_claim_strategy import FullHouseClaimStrategy
-from src.domain.ticket import Ticket
 
 pytestmark = pytest.mark.full_house_claim_strategy
 
 
-def test_full_house_valid_completion():
+def test_full_house_valid_completion(ticket):
 
-    ticket = Ticket(
-        raw_ticket=[
-            "4,16,_,_,48,_,63,76,_",
-            "7,_,23,38,_,52,_,_,80",
-            "9,_,25,_,_,56,64,_,83",
-        ]
-    )
     full_house_claim_strategy = FullHouseClaimStrategy()
 
     claim_result = full_house_claim_strategy.validate(
@@ -24,14 +16,7 @@ def test_full_house_valid_completion():
     assert claim_result.name == "ACCEPTED"
 
 
-def test_full_house_incomplete_numbers():
-    ticket = Ticket(
-        raw_ticket=[
-            "4,16,_,_,48,_,63,76,_",
-            "7,_,23,38,_,52,_,_,80",
-            "9,_,25,_,_,56,64,_,83",
-        ]
-    )
+def test_full_house_incomplete_numbers(ticket):
     full_house_claim_strategy = FullHouseClaimStrategy()
 
     claim_result = full_house_claim_strategy.validate(
@@ -41,14 +26,7 @@ def test_full_house_incomplete_numbers():
     assert claim_result.name == "REJECTED"
 
 
-def test_full_house_late_claim():
-    ticket = Ticket(
-        raw_ticket=[
-            "4,16,_,_,48,_,63,76,_",
-            "7,_,23,38,_,52,_,_,80",
-            "9,_,25,_,_,56,64,_,83",
-        ]
-    )
+def test_full_house_late_claim(ticket):
     full_house_claim_strategy = FullHouseClaimStrategy()
 
     claim_result = full_house_claim_strategy.validate(
