@@ -23,18 +23,12 @@ class ClaimStrategyFactory:
     @staticmethod
     def create(claim_type: ClaimType) -> BaseClaimStrategy:
         """
-        Create appropriate strategy based on claim type
+        Create a claim validation strategy
 
-        Args:
-            claim_type: Type of claim being made
-
-        Returns:
-            Strategy to validate the claim
-
-        Raises:
-            ValueError: If claim type is not supported
+        :param claim_type: claim type
+        :type claim_type: ClaimType
         """
-        strategy = ClaimStrategyFactory._strategies.get(claim_type)
+        strategy: BaseClaimStrategy = ClaimStrategyFactory._strategies.get(claim_type)
         if not strategy:
             raise ValueError(f"Unsupported claim type: {claim_type}")
         return strategy
