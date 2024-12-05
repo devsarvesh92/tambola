@@ -27,4 +27,5 @@ pythonpath = [
 # Markers definition
 markers = [
 "ticket: Ticket model tests",
+"claim_type: ClaimType model tests",
 ]
