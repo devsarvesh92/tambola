@@ -34,4 +34,5 @@ markers = [
 "bottom_line_claim_strategy: BottomLineClaimStrategy tests",
 "full_house_claim_strategy: FullHouseClaimStrategy tests",
 "early_five_claim_strategy: EarlyFiveClaimStrategy tests",
+"claim_strategy_factory: ClaimStrategyFactory tests",
 ]
