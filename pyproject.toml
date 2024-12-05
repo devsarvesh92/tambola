@@ -28,5 +28,6 @@ pythonpath = [
 markers = [
 "ticket: Ticket model tests",
 "claim_type: ClaimType model tests",
-"claimt_result: ClaimResult model tests",
+"claim_result: ClaimResult model tests",
+"top_line_claim_strategy: TopLineClaimStrategy tests",
 ]
