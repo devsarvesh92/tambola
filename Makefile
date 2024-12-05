@@ -10,3 +10,6 @@ test:
 
 run-test:
 	pdm run pytest -k ${test}
+
+run:
+	PYTHONPATH=$PYTHONPATH:. python src/main.py
