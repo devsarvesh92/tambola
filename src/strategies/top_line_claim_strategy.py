@@ -2,7 +2,6 @@
 Top Line Claim Strategy
 """
 
-from typing import Any
 from src.domain.claim_result import ClaimResult
 from src.domain.ticket import Ticket
 from src.strategies.base_claim_strategy import BaseClaimStrategy
@@ -26,8 +25,7 @@ class TopLineClaimStrategy(BaseClaimStrategy):
         :return: claim result
         :rtype: ClaimResult
         """
-        top_row: list[Any] = ticket.rows[0]
-        numbers_in_top_row: list[int] = [int(number) for number in top_row if number]
+        numbers_in_top_row: list[int] = ticket.get_top_row()
 
         numbers_in_top_row_set: set[int] = set(numbers_in_top_row)
         numbers_announced_set: set[int] = set(numbers_announced)

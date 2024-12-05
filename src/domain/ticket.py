@@ -65,5 +65,42 @@ class Ticket:
 
         for ticket in raw_ticket:
             row = ticket.split(",")
-            rows.append([int(char) if char != "_" else None for char in row])
+            rows.append([int(char) for char in row if char.isdigit()])
         return rows
+
+    def get_top_row(self) -> list[int]:
+        """
+        Get the top row
+
+        :return: top row
+        :rtype: list[int]
+        """
+        return self.rows[0]
+
+    def get_middle_row(self) -> list[int]:
+        """
+        Get the middle row
+
+        :return: middle row
+        :rtype: list[int]
+        """
+        middle_row_index = self.EXPECTED_ROWS // 2
+        return self.rows[middle_row_index]
+
+    def get_bottom_row(self) -> list[int]:
+        """
+        Get the bottom row
+
+        :return: bottom row
+        :rtype: list[int]
+        """
+        return self.rows[-1]
+
+    def get_all_numbers(self) -> list[int]:
+        """
+        Get all numbers
+
+        :return: all numbers
+        :rtype: list[int]
+        """
+        return [number for row in self.rows for number in row if number]

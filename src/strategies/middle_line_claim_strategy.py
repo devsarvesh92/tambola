@@ -2,7 +2,6 @@
 Middle Line Claim Strategy
 """
 
-from typing import Any
 from src.domain.claim_result import ClaimResult
 from src.domain.ticket import Ticket
 from src.strategies.base_claim_strategy import BaseClaimStrategy
@@ -26,10 +25,7 @@ class MiddleLineClaimStrategy(BaseClaimStrategy):
         :return: claim result
         :rtype: ClaimResult
         """
-        middle_row: list[Any] = ticket.rows[1]
-        numbers_in_middle_row: list[int] = [
-            int(number) for number in middle_row if number
-        ]
+        numbers_in_middle_row: list[int] = ticket.get_middle_row()
 
         numbers_in_top_row_set: set[int] = set(numbers_in_middle_row)
         numbers_announced_set: set[int] = set(numbers_announced)
