@@ -32,4 +32,5 @@ markers = [
 "top_line_claim_strategy: TopLineClaimStrategy tests",
 "middle_line_claim_strategy: MiddleLineClaimStrategy tests",
 "bottom_line_claim_strategy: BottomLineClaimStrategy tests",
+"full_house_claim_strategy: FullHouseClaimStrategy tests",
 ]
