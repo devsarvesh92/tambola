@@ -27,12 +27,12 @@ class MiddleLineClaimStrategy(BaseClaimStrategy):
         """
         numbers_in_middle_row: list[int] = ticket.get_middle_row()
 
-        numbers_in_top_row_set: set[int] = set(numbers_in_middle_row)
+        numbers_in_middle_row_set: set[int] = set(numbers_in_middle_row)
         numbers_announced_set: set[int] = set(numbers_announced)
 
         return (
             ClaimResult.ACCEPTED
-            if numbers_in_top_row_set.issubset(numbers_announced_set)
+            if numbers_in_middle_row_set.issubset(numbers_announced_set)
             and self.is_claim_made_fastest(
                 required_numbers=numbers_in_middle_row,
                 announced_numbers=numbers_announced,
